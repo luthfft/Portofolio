@@ -495,7 +495,7 @@
       End Portfolio Section -->
 
 
-      <!-- ======= Contact Section ======= -->
+     <!-- ======= Contact Section ======= -->
       <section id="contact" class="contact">
         <div class="container">
           <div class="section-title">
@@ -526,10 +526,7 @@
             </div>
 
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-              <form
-                action="forms/contact.php"
-                method="post"
-                role="form"
+              <form id="wa-form"
                 class="php-email-form">
                 <div class="row">
                   <div class="form-group col-md-6">
@@ -541,36 +538,17 @@
                       id="name"
                       required />
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="name">Your Email</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      id="email"
-                      required />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="name">Subject</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="subject"
-                    id="subject"
-                    required />
-                </div>
                 <div class="form-group">
                   <label for="name">Message</label>
                   <textarea
                     class="form-control"
                     name="message"
+                    id="message"
                     rows="10"
                     required></textarea>
                 </div>
                 <div class="my-3">
                   <div class="loading">Loading</div>
-                  <div class="error-message"></div>
                   <div class="sent-message">
                     Your message has been sent. Thank you!
                   </div>
@@ -602,7 +580,22 @@
       class="back-to-top d-flex align-items-center justify-content-center"
       ><i class="bi bi-arrow-up-short"></i
     ></a>
+<script>
+        document.getElementById('wa-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
 
+            // Get form values
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            // Construct the WhatsApp URL
+            const phoneNumber = '6287825593034';
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent("Halo saya " + name+ "\n" + message)}`;
+
+            // Redirect to the constructed URL
+            window.location.href = url;
+        });
+    </script>
     <!-- Vendor JS Files -->
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
