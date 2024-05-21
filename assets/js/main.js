@@ -5,6 +5,20 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+ document.getElementById('wa-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            // Construct the WhatsApp URL
+            const phoneNumber = '6287825593034';
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent("Halo saya " + name+ "\n" + message)}`;
+
+            // Redirect to the constructed URL
+            window.location.href = url;
+        });
 
 (function() {
   "use strict";
